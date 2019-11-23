@@ -1,5 +1,6 @@
 function loadFunctions() {
   positionOther();
+  todayDate();
 }
 
 function positionOther() {
@@ -15,4 +16,9 @@ function positionOther() {
       }
     }
   });
+}
+
+function todayDate() {
+  let today = new Date().toLocaleDateString("en-US");
+  document.querySelector(".today").value = today;
 }
