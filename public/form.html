@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
     <title>Phat Le: Code Project</title>
   </head>
   <body onload="loadFunctions()">
@@ -18,31 +19,31 @@
         <div class="form-header">Employee Information</div>
         <form>
           <div class="form-style">
-            <div class="first-name">
+            <div class="first-name-style">
               <label>
                 <span>First Name<span class="required">*</span></span>
               </label>
-              <input class="field-length" type="text" name="first_name" placeholder="First" />
+              <input class="field-length first-name" type="text" name="first_name" placeholder="First" />
             </div>
-            <div class="last-name">
+            <div class="last-name-style">
               <label>
                 <span>Last Name<span class="required">*</span></span>
               </label>
-              <input class="field-length" type="text" name="lname" placeholder="Last" />
+              <input class="field-length last-name" type="text" name="last_name" placeholder="Last" />
             </div>
-            <div class="email">
+            <div class="email-style">
               <label>
                 <span>Email<span class="required">*</span></span>
               </label>
-              <input class="field-length" type="text" name="email" placeholder="email" />
+              <input class="field-length email" type="text" name="email" placeholder="email" />
             </div>
-            <div class="number">
+            <div class="phone-number-style">
               <label>
                 <span>Phone Number<span class="required">*</span></span>
               </label>
-              <input class="field-length" type="text" name="number" placeholder="number" />
+              <input class="field-length phone-number" type="text" name="number" placeholder="number" />
             </div>
-            <div class="position">
+            <div class="position-style">
               <label>
                 <span>Position<span class="required">*</span></span>
               </label>
@@ -67,13 +68,24 @@
               </select>
             </div>
             <div class="other hidden">
-              <input class="field-length" type="text" name="other" placeholder="Specify the position" />
+              <input
+                class="field-length other-position"
+                type="text"
+                name="other"
+                placeholder="Specify the position"
+              />
             </div>
-            <div class="salary">
+            <div class="salary-style">
               <label>
                 <span>Salary<span class="required">*</span></span>
               </label>
-              <input class="field-length" type="text" name="salary" placeholder="Salary" />
+              <input
+                class="field-length salary"
+                type="text"
+                data-type="currency"
+                name="salary"
+                placeholder="$0"
+              />
             </div>
             <div class="date-hired">
               <script>
@@ -91,6 +103,9 @@
                 name="date-hired"
                 placeholder="Date-Hired"
               />
+            </div>
+            <div class="submit-btn">
+              <input id="submit" type="submit" value="Submit" />
             </div>
           </div>
         </form>
