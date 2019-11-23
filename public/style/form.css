@@ -3,7 +3,7 @@ html {
 }
 
 body {
-  background: ghostwhite;
+  background: whitesmoke;
 }
 
 .container h1 {
@@ -37,6 +37,7 @@ body {
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(6, 1fr);
   row-gap: 10px;
+  column-gap: 10px;
 }
 
 .form-style label {
@@ -46,7 +47,8 @@ body {
   font-weight: bolder;
 }
 
-.form-style input {
+.form-style input,
+select {
   box-sizing: border-box;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -69,31 +71,64 @@ body {
 }
 
 .form-style .field-length {
-  width: 98%;
+  width: 100%;
 }
 
 .first-name {
-  grid-column-start: 1;
-  grid-column-end: span 2;
+  grid-column: span 2;
   grid-row: 1;
 }
 
 .last-name {
-  grid-column-start: 3;
-  grid-column-end: span 4;
+  grid-column: span 3;
+
   grid-row: 1;
 }
 
 .number {
-  grid-column-start: 1;
-  grid-column-end: span 2;
+  grid-column: span 2;
   grid-row: 2;
 }
 
 .email {
-  grid-column-start: 3;
-  grid-column-end: span 4;
-  grid-row: 2;
+  grid-column: span 4;
+  grid-row: 3;
+}
+
+.position {
+  grid-column-start: 1;
+  grid-column-end: span 3;
+  grid-row: 4;
+}
+
+.salary {
+  grid-column: 4;
+  grid-row: 4;
+}
+
+.other {
+  grid-column: span 4;
+  grid-row: 5;
+}
+
+.hidden {
+  opacity: 0.3;
+  position: relative;
+  color: grey;
+}
+
+.hidden:after {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  content: " ";
+}
+
+.date-hired {
+  grid-column: span 4;
+  grid-row: 6;
 }
 
 .form-style .required {
