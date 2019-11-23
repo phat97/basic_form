@@ -17,7 +17,7 @@ body {
   padding: 15px 20px;
   border: 2px solid black;
   box-shadow: 3px 3px 3px lightgrey;
-  max-width: 650px;
+  max-width: 550px;
   font: 13px Arial, Helvetica, sans-serif;
 }
 
@@ -33,13 +33,10 @@ body {
 .form-style {
   margin: 10px auto;
   padding: 20px 12px 10px 20px;
-}
-
-.form-style li {
-  padding: 0;
-  display: block;
-  list-style: none;
-  margin: 10px 0 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  row-gap: 10px;
 }
 
 .form-style label {
@@ -71,10 +68,35 @@ body {
   border: 1px solid #88d5e9;
 }
 
-.form-style .field-half {
-  width: 49.4%;
+.form-style .field-length {
+  width: 98%;
 }
 
-.form-style .field-full {
-  width: 100%;
+.first-name {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row: 1;
+}
+
+.last-name {
+  grid-column-start: 3;
+  grid-column-end: span 4;
+  grid-row: 1;
+}
+
+.number {
+  grid-column-start: 1;
+  grid-column-end: span 2;
+  grid-row: 2;
+}
+
+.email {
+  grid-column-start: 3;
+  grid-column-end: span 4;
+  grid-row: 2;
+}
+
+.form-style .required {
+  color: red;
+  padding-left: 3px;
 }
