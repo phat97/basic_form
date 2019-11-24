@@ -39,6 +39,7 @@ function todayDate() {
 function submitData() {
   let submit = document.querySelector("#submit");
   let xhr = new XMLHttpRequest();
+  let url = "/form";
   let data = {};
 
   submit.addEventListener("click", e => {
@@ -47,6 +48,15 @@ function submitData() {
     if ((data = validateFormData()) != null) {
       console.log("Posting to database");
       console.log(JSON.stringify(data));
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.onreadystatechange = () => {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          console.log(xhr.responseText);
+        }
+      };
+      console.log(data);
+      xhr.send(JSON.stringify(data));
     } else {
       console.log("form invalid");
     }
