@@ -106,7 +106,7 @@ select {
 }
 
 .hidden {
-  opacity: 0.45;
+  opacity: 0.25;
   position: relative;
   color: grey;
 }
