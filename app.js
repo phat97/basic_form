@@ -24,7 +24,8 @@ let listener = app.listen(process.env.PORT || port, () => {
 });
 
 app.post("/form", (req, res) => {
-  let data = req.body;
+  const { first_name, last_name, number, email, position, salary, hired_date } = req.body;
+  const columns = "first_name, last_name, phone_number, email, position, salary, date_hired";
 
   const client = new Client({
     user: "postgres",
@@ -40,7 +41,18 @@ app.post("/form", (req, res) => {
     } else {
       console.log("Connected");
     }
-  });
 
-  res.send("GOOD SHIT");
+    client.query(
+      `INSERT INTO employee (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+      [first_name, last_name, number, email, position, salary, hired_date],
+      (error, result) => {
+        if (error) {
+          console.log("error");
+          res.send("Failed to Insert");
+        } else {
+          res.sendStatus(200);
+        }
+      }
+    );
+  });
 });

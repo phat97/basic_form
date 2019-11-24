@@ -52,12 +52,14 @@ function submitData() {
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
           console.log(xhr.responseText);
+          toastNotification(true);
         }
       };
       console.log(data);
       xhr.send(JSON.stringify(data));
     } else {
       console.log("form invalid");
+      toastNotification(false);
     }
   });
 }
@@ -142,7 +144,7 @@ function validateFormData() {
     last_name: lname.value,
     number: phone_number.value,
     email: email.value,
-    position: position.value != "empty" ? position.value : other.value,
+    position: position.value != "other" ? position.value : other.value,
     salary: salary.value,
     hired_date: hired_date.value
   };
@@ -216,4 +218,21 @@ function validateCurrency(salary) {
 function validateDate(date) {
   let pattern = /(0[1-9]|1[012])[- /.](0[1-9]|[12][0-9]|3[01])[- /.](19|20)\d\d/;
   return date.match(pattern);
+}
+
+function toastNotification(isSuccess) {
+  let x = document.getElementById("toast");
+  x.className = "show";
+  if (isSuccess) {
+    x.style.backgroundColor = "#e6ffe6";
+    x.style.border = "1px solid green";
+    x.innerHTML = "Successfully Added";
+  } else {
+    x.style.backgroundColor = "#fff4f4";
+    x.style.border = "1px solid red";
+    x.innerHTML = "Invalid Fields";
+  }
+  setTimeout(function() {
+    x.className = x.className.replace("show", "");
+  }, 3000);
 }
