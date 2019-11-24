@@ -1,5 +1,6 @@
 const express = require("express");
 const bodyParser = require("body-parser");
+const { Pool, Client } = require("pg");
 const app = express();
 const path = require("path");
 const router = express.Router();
@@ -12,7 +13,6 @@ app.use(
   })
 );
 app.use(express.static(path.join(__dirname, "public")));
-app.use("/scripts", express.static(path.join(__dirname, "scirpt")));
 
 router.get("/", function(req, res) {
   res.redirect("form.html");
@@ -25,6 +25,22 @@ let listener = app.listen(process.env.PORT || port, () => {
 
 app.post("/form", (req, res) => {
   let data = req.body;
-  console.log(req.body);
+
+  const client = new Client({
+    user: "postgres",
+    host: "localhost",
+    database: "postgres",
+    password: "1234",
+    port: 5432
+  });
+
+  client.connect(err => {
+    if (err) {
+      console.log(`conection error`, err.stack);
+    } else {
+      console.log("Connected");
+    }
+  });
+
   res.send("GOOD SHIT");
 });

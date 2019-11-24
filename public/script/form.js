@@ -44,7 +44,6 @@ function submitData() {
 
   submit.addEventListener("click", e => {
     e.preventDefault();
-    console.log("submit");
     if ((data = validateFormData()) != null) {
       console.log("Posting to database");
       console.log(JSON.stringify(data));
