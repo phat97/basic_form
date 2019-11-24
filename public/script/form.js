@@ -8,7 +8,7 @@ function loadFunctions() {
 }
 
 /**
- * If "Other" option is selected, make the text field available for user input
+ * If "other" option is selected, enable the text field available for user input
  */
 function positionOther() {
   let activities = document.querySelector("#position-list");
@@ -38,11 +38,15 @@ function todayDate() {
  */
 function submitData() {
   let submit = document.querySelector("#submit");
+  let xhr = new XMLHttpRequest();
+  let data = {};
+
   submit.addEventListener("click", e => {
     e.preventDefault();
     console.log("submit");
-    if (validateFormData()) {
+    if ((data = validateFormData()) != null) {
       console.log("Posting to database");
+      console.log(JSON.stringify(data));
     } else {
       console.log("form invalid");
     }
@@ -52,7 +56,7 @@ function submitData() {
 /**
  * Validate all the form inputs and return true if everything is successful
  *
- * @returns True if there is not error, else return false
+ * @returns JSON object with data, else return null
  */
 function validateFormData() {
   let error = false;
@@ -64,6 +68,7 @@ function validateFormData() {
   let other = document.querySelector(".other-position");
   let salary = document.querySelector(".salary");
   let hired_date = document.querySelector(".today");
+  let data = {};
 
   if (fname.value == "") {
     displayError(fname);
@@ -118,7 +123,22 @@ function validateFormData() {
   } else {
     resetBorderStyle(hired_date);
   }
-  return !error;
+
+  if (error) {
+    return null;
+  }
+
+  data = {
+    first_name: fname.value,
+    last_name: lname.value,
+    number: phone_number.value,
+    email: email.value,
+    position: position.value != "empty" ? position.value : other.value,
+    salary: salary.value,
+    hired_date: hired_date.value
+  };
+
+  return data;
 }
 
 /**
