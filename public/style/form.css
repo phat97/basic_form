@@ -154,7 +154,7 @@ select {
   padding-left: 3px;
 }
 
-#toast {
+#snackbar {
   visibility: hidden;
   min-width: 250px;
   margin-left: -125px;
@@ -168,7 +168,7 @@ select {
   font-size: 17px;
 }
 
-#toast.show {
+#snackbar.show {
   visibility: visible;
   -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
   animation: fadein 0.5s, fadeout 0.5s 2.5s;

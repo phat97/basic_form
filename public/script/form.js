@@ -221,7 +221,7 @@ function validateDate(date) {
 }
 
 function toastNotification(isSuccess) {
-  let x = document.getElementById("toast");
+  let x = document.getElementById("snackbar");
   x.className = "show";
   if (isSuccess) {
     x.style.backgroundColor = "#e6ffe6";
