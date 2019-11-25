@@ -45,21 +45,17 @@ function submitData() {
   submit.addEventListener("click", e => {
     e.preventDefault();
     if ((data = validateFormData()) != null) {
-      console.log("Posting to database");
-      console.log(JSON.stringify(data));
       xhr.open("POST", url, true);
       xhr.setRequestHeader("Content-Type", "application/json");
       xhr.onreadystatechange = () => {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          console.log(xhr.responseText);
-          toastNotification(true);
+          snackbarNotification(true);
+          resetForm();
         }
       };
-      console.log(data);
       xhr.send(JSON.stringify(data));
     } else {
-      console.log("form invalid");
-      toastNotification(false);
+      snackbarNotification(false);
     }
   });
 }
@@ -220,19 +216,37 @@ function validateDate(date) {
   return date.match(pattern);
 }
 
-function toastNotification(isSuccess) {
-  let x = document.getElementById("snackbar");
-  x.className = "show";
+/**
+ * Snackbar appears when user submits to indicate success or failure
+ *
+ * @param {Boolean} isSuccess
+ */
+function snackbarNotification(isSuccess) {
+  let element = document.getElementById("snackbar");
+  element.className = "show";
   if (isSuccess) {
-    x.style.backgroundColor = "#e6ffe6";
-    x.style.border = "1px solid green";
-    x.innerHTML = "Successfully Added";
+    element.style.backgroundColor = "#e6ffe6";
+    element.style.border = "1px solid green";
+    element.innerHTML = "Successfully Added";
   } else {
-    x.style.backgroundColor = "#fff4f4";
-    x.style.border = "1px solid red";
-    x.innerHTML = "Invalid Fields";
+    element.style.backgroundColor = "#fff4f4";
+    element.style.border = "1px solid red";
+    element.innerHTML = "Invalid Fields";
   }
   setTimeout(function() {
-    x.className = x.className.replace("show", "");
+    element.className = element.className.replace("show", "");
   }, 3000);
+}
+
+/**
+ * Clear out form values to default
+ */
+function resetForm() {
+  document.querySelector(".first-name").value = "";
+  document.querySelector(".last-name").value = "";
+  document.querySelector(".phone-number").value = "";
+  document.querySelector(".email").value = "";
+  document.querySelector("#position-list").value = "empty";
+  document.querySelector(".other-position").value = "";
+  document.querySelector(".salary").value = "";
 }
