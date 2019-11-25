@@ -9,26 +9,27 @@ function initFunction() {
  * Retrieve data from the backend
  */
 function getEmployeeData() {
+  let empty_page = document.createElement("H1");
   let http = new XMLHttpRequest();
   let url = "/api/data";
   let data;
+
   http.open("GET", url);
   http.send();
 
   http.onreadystatechange = () => {
     let table = document.querySelector(".employee-table");
-    let message = document.querySelector(".empty-page");
 
     if (http.readyState === 4 && http.status === 200) {
       data = JSON.parse(http.responseText);
+      console.log(data);
       if (Object.keys(data).length === 0 && data.constructor === Object) {
-        message.classList.toggle("hidden");
+        empty_page.appendChild(document.createTextNode("Database is Empty"));
+        empty_page.classList.add("empty-page");
+        document.body.appendChild(empty_page);
       } else {
-        table.classList.toggle("hidden");
         populateTable(data);
       }
-    } else {
-      message.classList.toggle("hidden");
     }
   };
 }
