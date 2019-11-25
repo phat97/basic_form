@@ -38,22 +38,23 @@ function todayDate() {
  */
 function submitData() {
   let submit = document.querySelector("#submit");
-  let xhr = new XMLHttpRequest();
-  let url = "/form";
+  let http = new XMLHttpRequest();
+  let url = "/api/form";
   let data = {};
 
   submit.addEventListener("click", e => {
     e.preventDefault();
     if ((data = validateFormData()) != null) {
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader("Content-Type", "application/json");
-      xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+      http.open("POST", url, true);
+      http.setRequestHeader("Content-Type", "application/json");
+      http.send(JSON.stringify(data));
+
+      http.onreadystatechange = () => {
+        if (http.readyState === 4 && http.status === 200) {
           snackbarNotification(true);
           resetForm();
         }
       };
-      xhr.send(JSON.stringify(data));
     } else {
       snackbarNotification(false);
     }

@@ -14,7 +14,7 @@ app.use(
 );
 app.use(express.static(path.join(__dirname, "public")));
 
-router.get("/", function(req, res) {
+router.get("/", (req, res) => {
   res.redirect("form.html");
 });
 
@@ -23,7 +23,7 @@ let listener = app.listen(process.env.PORT || port, () => {
   console.log(`Listening on port ${listener.address().port}`);
 });
 
-app.post("/form", (req, res) => {
+app.post("/api/form", (req, res) => {
   const { first_name, last_name, number, email, position, salary, hired_date } = req.body;
   const columns = "first_name, last_name, phone_number, email, position, salary, date_hired";
 
@@ -54,5 +54,31 @@ app.post("/form", (req, res) => {
         }
       }
     );
+  });
+});
+
+app.get("/api/data", (req, res) => {
+  const client = new Client({
+    user: "postgres",
+    host: "localhost",
+    database: "postgres",
+    password: "1234",
+    port: 5432
+  });
+  client.connect(err => {
+    if (err) {
+      console.log(`conection error`, err.stack);
+    } else {
+      console.log("Connected");
+    }
+
+    client.query(`SELECT * FROM employee`, (error, results) => {
+      if (error) {
+        console.log("retrieve data failed");
+        res.sendStatus(500);
+      } else {
+        res.status(200).json(results.rows);
+      }
+    });
   });
 });
