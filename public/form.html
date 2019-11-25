@@ -17,7 +17,7 @@
       <h1>Phat Le: Code Project</h1>
       <!-- Employee Form -->
       <div class="form-body">
-        <div class="form-header">Employee Information</div>
+        <div class="form-header">Add Employee</div>
         <form>
           <div class="form-style">
             <div class="first-name-style">
@@ -32,17 +32,17 @@
               </label>
               <input class="field-length last-name" type="text" name="last_name" placeholder="Last" />
             </div>
-            <div class="email-style">
-              <label>
-                <span>Email<span class="required">*</span></span>
-              </label>
-              <input class="field-length email" type="text" name="email" placeholder="email" />
-            </div>
             <div class="phone-number-style">
               <label>
                 <span>Phone Number<span class="required">*</span></span>
               </label>
               <input class="field-length phone-number" type="text" name="number" placeholder="number" />
+            </div>
+            <div class="email-style">
+              <label>
+                <span>Email<span class="required">*</span></span>
+              </label>
+              <input class="field-length email" type="text" name="email" placeholder="email" />
             </div>
             <div class="position-style">
               <label>
@@ -74,6 +74,7 @@
                 type="text"
                 name="other"
                 placeholder="Specify the position"
+                tabindex="-1"
               />
             </div>
             <div class="salary-style">
@@ -85,7 +86,7 @@
                 type="text"
                 data-type="currency"
                 name="salary"
-                placeholder="$0"
+                placeholder="0"
               />
             </div>
             <div class="date-hired">

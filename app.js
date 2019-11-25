@@ -38,22 +38,22 @@ app.post("/api/form", (req, res) => {
   client.connect(err => {
     if (err) {
       console.log(`conection error`, err.stack);
+      res.sendStatus(500);
     } else {
       console.log("Connected");
-    }
-
-    client.query(
-      `INSERT INTO employee (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
-      [first_name, last_name, number, email, position, salary, hired_date],
-      (error, result) => {
-        if (error) {
-          console.log("error");
-          res.send("Failed to Insert");
-        } else {
-          res.sendStatus(200);
+      client.query(
+        `INSERT INTO employee (${columns}) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        [first_name, last_name, number, email, position, salary, hired_date],
+        (error, result) => {
+          if (error) {
+            console.log("error");
+            res.sendStats(500);
+          } else {
+            res.sendStatus(200);
+          }
         }
-      }
-    );
+      );
+    }
   });
 });
 
@@ -68,17 +68,17 @@ app.get("/api/data", (req, res) => {
   client.connect(err => {
     if (err) {
       console.log(`conection error`, err.stack);
+      res.sendStatus(500);
     } else {
       console.log("Connected");
+      client.query(`SELECT * FROM employee`, (error, results) => {
+        if (error) {
+          console.log("retrieve data failed");
+          res.sendStatus(500);
+        } else {
+          res.status(200).json(results.rows);
+        }
+      });
     }
-
-    client.query(`SELECT * FROM employee`, (error, results) => {
-      if (error) {
-        console.log("retrieve data failed");
-        res.sendStatus(500);
-      } else {
-        res.status(200).json(results.rows);
-      }
-    });
   });
 });
