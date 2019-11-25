@@ -15,7 +15,7 @@ app.use(
 app.use(express.static(path.join(__dirname, "public")));
 
 router.get("/", (req, res) => {
-  res.redirect("form.html");
+  res.redirect("employee_list.html");
 });
 
 app.use("/", router);
