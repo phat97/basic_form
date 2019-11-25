@@ -28,7 +28,8 @@ body {
   padding-bottom: 10px;
 }
 
-.table-header input {
+.table-header .add-new {
+  font-size: 12px;
   float: right;
   background: #4b99ad;
   padding: 4px 10px;
@@ -36,6 +37,7 @@ body {
   border-radius: 15px;
   color: #fff;
   margin: 0;
+  text-decoration: none;
 }
 
 .table-header input:hover {

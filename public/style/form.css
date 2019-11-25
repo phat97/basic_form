@@ -7,8 +7,8 @@ body {
   background: whitesmoke;
 }
 
-.container h1 {
-  text-align: center;
+.container {
+  margin: 30px auto;
 }
 
 /* EMPLOYEE FORM */

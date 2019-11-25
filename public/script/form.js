@@ -53,6 +53,7 @@ function submitData() {
         if (http.readyState === 4 && http.status === 200) {
           snackbarNotification(true);
           resetForm();
+          history.back();
         }
       };
     } else {

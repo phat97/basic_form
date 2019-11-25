@@ -6,13 +6,6 @@ function initFunction() {
 }
 
 /**
- * Go to the form page
- */
-function addEmployee() {
-  location.replace("/form.html");
-}
-
-/**
  * Retrieve data from the backend
  */
 function getEmployeeData() {
