@@ -27,12 +27,17 @@ app.post("/api/form", (req, res) => {
   const { first_name, last_name, number, email, position, salary, hired_date } = req.body;
   const columns = "first_name, last_name, phone_number, email, position, salary, date_hired";
 
+  // const client = new Client({
+  //   user: "postgres",
+  //   host: "localhost",
+  //   database: "postgres",
+  //   password: "1234",
+  //   port: 5432
+  // });
+
   const client = new Client({
-    user: "postgres",
-    host: "localhost",
-    database: "postgres",
-    password: "1234",
-    port: 5432
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
   });
 
   client.connect(err => {
@@ -58,13 +63,19 @@ app.post("/api/form", (req, res) => {
 });
 
 app.get("/api/data", (req, res) => {
+  // const client = new Client({
+  //   user: "postgres",
+  //   host: "localhost",
+  //   database: "postgres",
+  //   password: "1234",
+  //   port: 5432
+  // });
+
   const client = new Client({
-    user: "postgres",
-    host: "localhost",
-    database: "postgres",
-    password: "1234",
-    port: 5432
+    connectionString: process.env.DATABASE_URL,
+    ssl: true
   });
+
   client.connect(err => {
     if (err) {
       console.log(`conection error`, err.stack);
