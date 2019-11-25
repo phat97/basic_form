@@ -46,8 +46,8 @@ app.post("/api/form", (req, res) => {
         [first_name, last_name, number, email, position, salary, hired_date],
         (error, result) => {
           if (error) {
-            console.log("error");
-            res.sendStats(500);
+            console.log("Insert Failed", error.stack);
+            res.sendStatus(500);
           } else {
             res.sendStatus(200);
           }
@@ -73,7 +73,7 @@ app.get("/api/data", (req, res) => {
       console.log("Connected");
       client.query(`SELECT * FROM employee`, (error, results) => {
         if (error) {
-          console.log("retrieve data failed");
+          console.log("retrieve data failed", error.stack);
           res.sendStatus(500);
         } else {
           res.status(200).json(results.rows);
