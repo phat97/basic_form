@@ -12,9 +12,10 @@
 
     <title>Phat Le: Code Project</title>
   </head>
-  <body onload="loadFunctions()">
+  <body onload="initFunction()">
     <div class="container">
       <h1>Phat Le: Code Project</h1>
+      <!-- Employee Form -->
       <div class="form-body">
         <div class="form-header">Employee Information</div>
         <form>
@@ -93,9 +94,11 @@
                   $("#datepicker").datepicker();
                 });
               </script>
+
               <label>
                 <span>Date Hired<span class="required">*</span></span>
               </label>
+
               <input
                 id="datepicker"
                 class="field-length today"
@@ -110,9 +113,10 @@
           </div>
         </form>
       </div>
+      <!-- End ofEmployee Form -->
       <div id="snackbar"></div>
       <div class="view-employee">
-        <a href="#">View List of Employees</a>
+        <a href="/employee_list.html">View List of Employees</a>
       </div>
     </div>
   </body>

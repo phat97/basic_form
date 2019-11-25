@@ -1,8 +1,8 @@
 /**
  * Run functions to add eventlisteners to elements when page loads
  */
-function loadFunctions() {
-  positionOther();
+function initFunction() {
+  enableOtherOption();
   todayDate();
   submitData();
 }
@@ -10,7 +10,7 @@ function loadFunctions() {
 /**
  * If "other" option is selected, enable the text field available for user input
  */
-function positionOther() {
+function enableOtherOption() {
   let activities = document.querySelector("#position-list");
   activities.addEventListener("change", e => {
     let option = e.target.value;

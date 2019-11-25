@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="style/employee_list.css" />
+    <script src="script/employee_list.js"></script>
+    <title>Employee List</title>
+  </head>
+  <body onload="initFunction()">
+    <div class="container">
+      <div class="table-wrapper">
+        <div class="table-header">
+          <span>
+            Employee Information
+          </span>
+          <input type="button" value="Add New" onclick="addEmployee()" />
+        </div>
+        <table class="employee-table">
+          <thead>
+            <tr>
+              <th>id</th>
+              <th>Name</th>
+              <th>Position</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Salary</th>
+              <th>Date Hired</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td>
+              <td>John Doe is a very hehehe</td>
+              <td>Junior web developer reatest</td>
+              <td>(171) 555-2222</td>
+              <td>emailthatisverylongswe@email.ca</td>
+              <td>2000</td>
+              <td>11/24/2019</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
